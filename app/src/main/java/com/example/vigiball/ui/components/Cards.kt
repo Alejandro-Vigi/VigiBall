@@ -10,6 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import com.example.vigiball.ui.model.Character
 import com.example.vigiball.ui.network.DragonBallApi
@@ -197,6 +199,23 @@ fun Cards(isDarkTheme: Boolean) {
                     .padding(24.dp)
                     .background(cardColor, shape = RoundedCornerShape(16.dp))
             ) {
+                // Ícono de cierre (zIndex alto)
+                IconButton(
+                    onClick = { selectedCharacterId = null },
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .zIndex(1f) // <-- Hace que esté encima de los demás
+                        .padding(end = 15.dp, top = 15.dp)
+                        .size(30.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.Close,
+                        contentDescription = "Close",
+                        tint = textColor,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
