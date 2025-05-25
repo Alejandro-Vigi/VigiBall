@@ -1,4 +1,4 @@
-package com.example.vigiball
+package com.example.vigiball.ui.components
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -35,6 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
+import com.example.vigiball.R
 import kotlinx.coroutines.launch
 
 @Composable

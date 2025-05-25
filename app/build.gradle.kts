@@ -49,6 +49,16 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+    // Gson Converter (para usar GsonConverterFactory)
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.6.0") // Versión más reciente
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
