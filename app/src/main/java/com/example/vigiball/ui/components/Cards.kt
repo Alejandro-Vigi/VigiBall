@@ -14,7 +14,6 @@ import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,6 +27,7 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import com.example.vigiball.ui.model.Character
+import com.example.vigiball.ui.model.Transformation
 import com.example.vigiball.ui.network.DragonBallApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -37,9 +37,9 @@ fun Cards(isDarkTheme: Boolean) {
     var characters by remember { mutableStateOf(emptyList<Character>()) }
     var isLoading by remember { mutableStateOf(true) }
     var error by remember { mutableStateOf<String?>(null) }
-    var retryCount by remember { mutableStateOf(0) }
-    var selectedCharacterId by rememberSaveable { mutableStateOf<String?>(null) }
-    val selectedCharacter = characters.find { it.id == selectedCharacterId }
+    var retryCount by remember { mutableIntStateOf(0) }
+    var selectedCharacter by remember { mutableStateOf<Character?>(null) }
+    var isLoadingDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(retryCount) {
         try {
@@ -79,7 +79,7 @@ fun Cards(isDarkTheme: Boolean) {
         isLoading -> {
             Box(
                 modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
+                contentAlignment = Alignment.Center,
             ) {
                 CircularProgressIndicator()
             }
@@ -144,7 +144,10 @@ fun Cards(isDarkTheme: Boolean) {
                     modifier = Modifier
                         .height(270.dp)
                         .fillMaxWidth()
-                        .clickable { selectedCharacterId = character.id }
+                        .clickable {
+                            selectedCharacter = character
+                            isLoadingDialog = true
+                        }
                 ) {
                     Column(
                         modifier = Modifier
@@ -188,128 +191,215 @@ fun Cards(isDarkTheme: Boolean) {
             }
         }
     }
-    if (selectedCharacter != null) {
+
+    // Diálogo
+    selectedCharacter?.let { currentCharacter ->
+        val characterState by produceState<Character?>(
+            initialValue = currentCharacter,
+            key1 = currentCharacter,
+            producer = {
+                try {
+                    val details = withContext(Dispatchers.IO) {
+                        DragonBallApi.service.getCharacterDetails(currentCharacter.id.toInt())
+                    }
+                    value = currentCharacter.copy(
+                        name = details.name,
+                        affiliation = details.affiliation,
+                        imageUrl = details.image,
+                        ki = details.ki,
+                        maxKi = details.maxKi,
+                        race = details.race,
+                        gender = details.gender,
+                        description = details.description,
+                        transformations = details.transformations?.map {
+                            Transformation(
+                                id = it.id.toString(),
+                                name = it.name,
+                                image = it.image,
+                                ki = it.ki
+                            )
+                        } ?: emptyList()
+                    )
+                } catch (e: Exception) {
+                    value = currentCharacter
+                } finally {
+                    isLoadingDialog = false
+                }
+            }
+        )
+
         Dialog(
-            onDismissRequest = { selectedCharacterId = null },
+            onDismissRequest = {
+                selectedCharacter = null
+                isLoadingDialog = false
+            },
             properties = DialogProperties(usePlatformDefaultWidth = false)
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(24.dp)
-                    .background(cardColor, shape = RoundedCornerShape(16.dp))
-            ) {
-                // Ícono de cierre (zIndex alto)
-                IconButton(
-                    onClick = { selectedCharacterId = null },
-                    modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .zIndex(1f) // <-- Hace que esté encima de los demás
-                        .padding(end = 15.dp, top = 15.dp)
-                        .size(30.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Rounded.Close,
-                        contentDescription = "Close",
-                        tint = textColor,
-                        modifier = Modifier.size(24.dp)
-                    )
-                }
-
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .heightIn(max = 700.dp)
-                        .padding(16.dp)
-                        .verticalScroll(rememberScrollState()),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Top
-                ) {
-                    // Aquí va todo el contenido de la ventana
-                    Text(
-                        text = selectedCharacter!!.name,
-                        fontSize = 26.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = textColor
-                    )
-
-                    Spacer(modifier = Modifier.height(12.dp))
-
-                    AsyncImage(
-                        model = selectedCharacter!!.imageUrl,
-                        contentDescription = selectedCharacter!!.name,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier
-                            .height(240.dp)
-                            .fillMaxWidth()
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = "Afiliación: ${selectedCharacter!!.affiliation}",
-                        fontSize = 18.sp,
-                        color = textColor
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = "KI: ${selectedCharacter!!.ki}",
-                        fontSize = 18.sp,
-                        color = textColor
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = "KI Máximo: ${selectedCharacter!!.maxKi}",
-                        fontSize = 18.sp,
-                        color = textColor
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = "Raza: ${selectedCharacter!!.race}",
-                        fontSize = 18.sp,
-                        color = textColor
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = "Género: ${selectedCharacter!!.gender}",
-                        fontSize = 18.sp,
-                        color = textColor
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = "Descripción:\n${selectedCharacter!!.description}",
-                        fontSize = 16.sp,
-                        color = textColor,
-                        textAlign = TextAlign.Justify,
-                        modifier = Modifier
-                            .padding(start = 16.dp, end = 16.dp, top = 16.dp)
-                    )
-
-                    Spacer(modifier = Modifier.height(6.dp))
-
-                    Button(
-                        onClick = { selectedCharacterId = null },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = if (isDarkTheme) Color(0xFF89322B) else Color(0xFFEF4138),
-                            contentColor = Color.White,
-                        ),
+            key(characterState?.id ?: "") {
+                if (isLoadingDialog) {
+                    Box(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(24.dp)
+                            .height(200.dp)
+                            .padding(vertical = 40.dp)
+                            .background(cardColor, shape = RoundedCornerShape(16.dp)),
+                        contentAlignment = Alignment.Center
                     ) {
-                        Text("Cerrar", fontSize = 16.sp)
+                        CircularProgressIndicator()
                     }
+                } else {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(24.dp)
+                            .background(cardColor, shape = RoundedCornerShape(16.dp))
+                    ) {
+                        IconButton(
+                            onClick = { selectedCharacter = null },
+                            modifier = Modifier
+                                .align(Alignment.TopEnd)
+                                .zIndex(1f)
+                                .padding(end = 15.dp, top = 15.dp)
+                                .size(30.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.Close,
+                                contentDescription = "Close",
+                                tint = textColor,
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
 
-                    Spacer(modifier = Modifier.height(10.dp))
+                        characterState?.let { character ->
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .heightIn(max = 700.dp)
+                                    .padding(16.dp)
+                                    .verticalScroll(rememberScrollState()),
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Top
+                            ) {
+                                Text(
+                                    text = character.name,
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = textColor
+                                )
+
+                                Spacer(modifier = Modifier.height(12.dp))
+
+                                AsyncImage(
+                                    model = character.imageUrl,
+                                    contentDescription = character.name,
+                                    contentScale = ContentScale.Fit,
+                                    modifier = Modifier
+                                        .height(240.dp)
+                                        .fillMaxWidth(),
+                                )
+
+                                Spacer(modifier = Modifier.height(12.dp))
+
+                                Text(
+                                    "Afiliación: ${character.affiliation}",
+                                    fontSize = 18.sp,
+                                    color = textColor
+                                )
+
+                                Text(
+                                    "KI: ${character.ki}",
+                                    fontSize = 18.sp,
+                                    color = textColor
+                                )
+
+                                Text(
+                                    "KI Máximo: ${character.maxKi}",
+                                    fontSize = 18.sp,
+                                    color = textColor
+                                )
+
+                                Text(
+                                    "Raza: ${character.race}",
+                                    fontSize = 18.sp,
+                                    color = textColor
+                                )
+
+                                Text(
+                                    "Género: ${character.gender}",
+                                    fontSize = 18.sp,
+                                    color = textColor
+                                )
+
+                                Spacer(modifier = Modifier.height(12.dp))
+
+                                Text(
+                                    text = "Descripción:\n${character.description}",
+                                    fontSize = 16.sp,
+                                    color = textColor,
+                                    textAlign = TextAlign.Justify,
+                                    modifier = Modifier
+                                        .padding(start = 16.dp, end = 16.dp, top = 16.dp)
+                                )
+
+                                Spacer(modifier = Modifier.height(16.dp))
+
+                                Text(
+                                    text = "Transformaciones:",
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = textColor
+                                )
+
+                                if (character.transformations.isNotEmpty()) {
+                                    character.transformations.forEach { transformation ->
+                                        Spacer(modifier = Modifier.height(8.dp))
+
+                                        Text(
+                                            text = transformation.name,
+                                            fontSize = 16.sp,
+                                            fontWeight = FontWeight.SemiBold,
+                                            color = textColor
+                                        )
+
+                                        AsyncImage(
+                                            model = transformation.image,
+                                            contentDescription = transformation.name,
+                                            modifier = Modifier
+                                                .height(160.dp)
+                                                .fillMaxWidth(),
+                                            contentScale = ContentScale.Fit
+                                        )
+
+                                        Text("KI: ${transformation.ki}", color = textColor)
+                                    }
+                                } else {
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Text(
+                                        text = "Este personaje no tiene transformaciones registradas.",
+                                        fontSize = 16.sp,
+                                        color = textColor
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.height(15.dp))
+
+                                Button(
+                                    onClick = { selectedCharacter = null },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = if (isDarkTheme) Color(0xFF89322B) else Color(0xFFEF4138),
+                                        contentColor = Color.White,
+                                    ),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                ) {
+                                    Text("Cerrar", fontSize = 16.sp)
+                                }
+
+                                Spacer(modifier = Modifier.height(5.dp))
+                            }
+                        }
+                    }
                 }
             }
         }

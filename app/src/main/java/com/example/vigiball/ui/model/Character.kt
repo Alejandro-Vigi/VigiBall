@@ -1,4 +1,12 @@
+
 package com.example.vigiball.ui.model
+
+data class Transformation(
+    val id: String,
+    val name: String,
+    val image: String,
+    val ki: String
+)
 
 data class Character(
     val id: String,
@@ -9,7 +17,8 @@ data class Character(
     val maxKi: String,
     val race: String,
     val gender: String,
-    val description: String
+    val description: String,
+    val transformations: List<Transformation> = emptyList()
 )
 
 data class CharacterResponse(
@@ -21,5 +30,13 @@ data class CharacterResponse(
     val maxKi: String,
     val race: String,
     val gender: String,
-    val description: String
+    val description: String,
+    val transformations: List<TransformationResponse>? = null
+)
+
+data class TransformationResponse(
+    val id: Int,
+    val name: String,
+    val image: String,
+    val ki: String
 )
