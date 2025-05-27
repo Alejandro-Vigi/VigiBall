@@ -51,7 +51,7 @@ Diseñada con **Jetpack Compose**, **Kotlin** y **arquitectura limpia**, esta ap
 | Imágenes | Coil |
 | Persistencia | DataStore |
 | Manejo de estado | ViewModel, StateFlow |
-| Otros | GitHub A |
+| Otros | GitHub |
 
 ---
 
