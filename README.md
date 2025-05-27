@@ -57,18 +57,23 @@ Diseñada con **Jetpack Compose**, **Kotlin** y **arquitectura limpia**, esta ap
 
 ## 🖼️ Screenshots
 
-> ![Light](https://github.com/user-attachments/assets/a0a46f37-1a4b-4fcd-b3e5-31d1231c29f1)
-> Modo Light
-> ![DarkMode](https://github.com/user-attachments/assets/5ba14852-8ab4-417f-ada2-32ce4d0bd9c5)
-> DarkMode
-> ![Search](https://github.com/user-attachments/assets/461d4ff8-e244-498c-b97a-4b17d102e421)
-> Cuadro de búsqueda
-> ![Info](https://github.com/user-attachments/assets/aeae06c5-6aa1-4052-a317-3e5ccef86181)
-> Cuadro de información del desarrollador
-> ![Character 1](https://github.com/user-attachments/assets/afd0e814-d67b-42af-ac0d-4d3963112fcc)
-> Personaje en DarkMode
-> ![Character 2](https://github.com/user-attachments/assets/ddd724f5-bb9d-4bc4-812c-44183d6b821e)
-> Personaje en LightMode
+<img src="https://github.com/user-attachments/assets/a0a46f37-1a4b-4fcd-b3e5-31d1231c29f1" alt="Light" width="300" />
+<br>Modo Light
+
+<img src="https://github.com/user-attachments/assets/5ba14852-8ab4-417f-ada2-32ce4d0bd9c5" alt="DarkMode" width="300" />
+<br>DarkMode
+
+<img src="https://github.com/user-attachments/assets/461d4ff8-e244-498c-b97a-4b17d102e421" alt="Search" width="300" />
+<br>Cuadro de búsqueda
+
+<img src="https://github.com/user-attachments/assets/aeae06c5-6aa1-4052-a317-3e5ccef86181" alt="Info" width="300" />
+<br>Cuadro de información del desarrollador
+
+<img src="https://github.com/user-attachments/assets/afd0e814-d67b-42af-ac0d-4d3963112fcc" alt="Character 1" width="300" />
+<br>Personaje en DarkMode
+
+<img src="https://github.com/user-attachments/assets/ddd724f5-bb9d-4bc4-812c-44183d6b821e" alt="Character 2" width="300" />
+<br>Personaje en LightMode
 
 ---
 
