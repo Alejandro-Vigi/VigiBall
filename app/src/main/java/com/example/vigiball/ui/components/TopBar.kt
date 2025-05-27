@@ -40,7 +40,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -54,6 +53,16 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
+import com.example.vigiball.ui.theme.Black
+import com.example.vigiball.ui.theme.DarkBlue
+import com.example.vigiball.ui.theme.Gray
+import com.example.vigiball.ui.theme.LightBlue
+import com.example.vigiball.ui.theme.LightGray
+import com.example.vigiball.ui.theme.MediumDarkBlue
+import com.example.vigiball.ui.theme.SuperDarkBlue
+import com.example.vigiball.ui.theme.SuperDarkRed
+import com.example.vigiball.ui.theme.SuperLightRed
+import com.example.vigiball.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -61,9 +70,9 @@ fun TopBar(
     isDarkTheme: Boolean,
     onToggleTheme: (Boolean) -> Unit
 ) {
-    val themeTextColor = if (isDarkTheme) Color.White else Color.Black
-    val topBarColor = if (isDarkTheme) Color(0xFF181c25) else Color(0xFFFFFFFF)
-    val backgroundColor = if(isDarkTheme) Color(0xFF181c25) else Color(0xFFFFFFFF)
+    val themeTextColor = if (isDarkTheme) White else Black
+    val topBarColor = if (isDarkTheme) SuperDarkBlue else White
+    val backgroundColor = if(isDarkTheme) SuperDarkBlue else White
     var showMenu by remember { mutableStateOf(false) }
     var showAboutDialog by remember { mutableStateOf(false) }
     val context = LocalContext.current
@@ -134,7 +143,7 @@ fun TopBar(
                             expanded = showMenu,
                             onDismissRequest = { showMenu = false },
                             modifier = Modifier
-                                .background(if (isDarkTheme) Color(0xFF252733) else Color.White)
+                                .background(if (isDarkTheme) DarkBlue else White)
                                 .width(160.dp)
                         ) {
                             DropdownMenuItem(
@@ -216,7 +225,7 @@ fun TopBar(
                             Icon(
                                 imageVector = Icons.Rounded.Close,
                                 contentDescription = "Close",
-                                tint = if (isDarkTheme) Color.White else Color.Black,
+                                tint = if (isDarkTheme) White else Black,
                                 modifier = Modifier.size(24.dp)
                             )
                         }
@@ -281,7 +290,7 @@ fun TopBar(
                             modifier = Modifier
                                 .fillMaxWidth(),
                             thickness = 1.dp,
-                            color = if (isDarkTheme) Color.Black else Color.Gray
+                            color = if (isDarkTheme) Black else Gray
                         )
                         Spacer(modifier = Modifier.height(20.dp))
                         Row(
@@ -301,7 +310,7 @@ fun TopBar(
                                     imageVector = ic_instagram,
                                     modifier = Modifier.size(40.dp),
                                     contentDescription = "Instagram",
-                                    tint = if (isDarkTheme) Color.White else Color.Black
+                                    tint = if (isDarkTheme) White else Black
                                 )
                             }
                             Spacer(modifier = Modifier.width(25.dp))
@@ -317,7 +326,7 @@ fun TopBar(
                                     imageVector = ic_linkedin,
                                     modifier = Modifier.size(40.dp),
                                     contentDescription = "Linkedin",
-                                    tint = if (isDarkTheme) Color.White else Color.Black
+                                    tint = if (isDarkTheme) White else Black
                                 )
                             }
                             Spacer(modifier = Modifier.width(25.dp))
@@ -333,7 +342,7 @@ fun TopBar(
                                     imageVector = ic_github,
                                     modifier = Modifier.size(40.dp),
                                     contentDescription = "Instagram",
-                                    tint = if (isDarkTheme) Color.White else Color.Black
+                                    tint = if (isDarkTheme) White else Black
                                 )
                             }
                         }
@@ -343,17 +352,17 @@ fun TopBar(
                     TextButton(
                         onClick = { showAboutDialog = false },
                         colors = ButtonDefaults.textButtonColors(
-                            containerColor = if (isDarkTheme) Color(0xFF89322B) else Color(0xFFEF4138),
-                            contentColor = Color.White
+                            containerColor = if (isDarkTheme) SuperDarkRed else SuperLightRed,
+                            contentColor = White
                         ),
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text("Cerrar")
                     }
                 },
-                containerColor = if (isDarkTheme) Color(0xFF252733) else Color.White,
-                textContentColor = if (isDarkTheme) Color.White else Color.Black,
-                titleContentColor = if (isDarkTheme) Color.White else Color.Black
+                containerColor = if (isDarkTheme) DarkBlue else White,
+                textContentColor = if (isDarkTheme) White else Black,
+                titleContentColor = if (isDarkTheme) White else Black
             )
         }
         if (isSearchActive) {
@@ -373,7 +382,7 @@ fun TopBar(
                             Icon(
                                 imageVector = Icons.Rounded.Close,
                                 contentDescription = "Close",
-                                tint = if (isDarkTheme) Color.White else Color.Black,
+                                tint = if (isDarkTheme) White else Black,
                                 modifier = Modifier.size(24.dp)
                             )
                         }
@@ -407,12 +416,12 @@ fun TopBar(
                                 isSearchActive = false
                             },
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = if (isDarkTheme) Color(0xFF252733) else Color(0xFFDFE1E3)
+                                containerColor = if (isDarkTheme) DarkBlue else LightGray
                             ),
                             modifier = Modifier.weight(1f)
                         ) {
                             Text("Limpiar",
-                                color = if (isDarkTheme) Color.White else Color.Black)
+                                color = if (isDarkTheme) White else Black)
                         }
 
                         Spacer(modifier = Modifier.width(8.dp))
@@ -422,12 +431,12 @@ fun TopBar(
                                 isSearchActive = false
                             },
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = if (isDarkTheme) Color(0xFF3b496f) else Color(0xFF90b0e5)
+                                containerColor = if (isDarkTheme) MediumDarkBlue else LightBlue
                             ),
                             modifier = Modifier.weight(1f)
                         ) {
                             Text("Buscar",
-                                color = if (isDarkTheme) Color.White else Color.Black,)
+                                color = if (isDarkTheme) White else Black)
                         }
                     }
                 }

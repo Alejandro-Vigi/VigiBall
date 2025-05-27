@@ -26,7 +26,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.lerp
@@ -36,6 +35,9 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import com.example.vigiball.R
+import com.example.vigiball.ui.theme.BlueSky
+import com.example.vigiball.ui.theme.BorderColor
+import com.example.vigiball.ui.theme.NightSky
 import kotlinx.coroutines.launch
 
 @Composable
@@ -49,10 +51,6 @@ fun DarkModeSwitch(checked: Boolean, modifier: Modifier, onCheckedChanged: (Bool
     val valueToOffset = if (checked) 1f else 0f
     val offset = remember { Animatable(valueToOffset) }
     val scope = rememberCoroutineScope()
-
-    val blueSky= Color(0xFF4478a9)
-    val nightSky =  Color(0xFF333333)
-    val borderColor = Color(0x40000000)
 
     DisposableEffect(checked) {
         if (offset.targetValue != valueToOffset) {
@@ -69,8 +67,8 @@ fun DarkModeSwitch(checked: Boolean, modifier: Modifier, onCheckedChanged: (Bool
             .width(switchWidth)
             .height(switchHeight)
             .clip(RoundedCornerShape(switchHeight))
-            .background(lerp(blueSky, nightSky, offset.value))
-            .border(3.dp, borderColor, RoundedCornerShape(switchHeight))
+            .background(lerp(BlueSky, NightSky, offset.value))
+            .border(3.dp, BorderColor, RoundedCornerShape(switchHeight))
             .toggleable(
                 value = checked,
                 onValueChange = onCheckedChanged,

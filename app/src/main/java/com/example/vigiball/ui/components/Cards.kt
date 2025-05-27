@@ -29,6 +29,14 @@ import coil.compose.AsyncImage
 import com.example.vigiball.ui.model.Character
 import com.example.vigiball.ui.model.Transformation
 import com.example.vigiball.ui.network.DragonBallApi
+import com.example.vigiball.ui.theme.Black
+import com.example.vigiball.ui.theme.DarkBlue
+import com.example.vigiball.ui.theme.DarkRed
+import com.example.vigiball.ui.theme.LightGray
+import com.example.vigiball.ui.theme.LightRed
+import com.example.vigiball.ui.theme.SuperDarkRed
+import com.example.vigiball.ui.theme.SuperLightRed
+import com.example.vigiball.ui.theme.White
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -45,6 +53,9 @@ fun Cards(
     var isLoadingDialog by remember { mutableStateOf(false) }
     var allCharacters by remember { mutableStateOf(emptyList<Character>()) }
     var filteredCharacters by remember { mutableStateOf(emptyList<Character>()) }
+    val cardColor = if (isDarkTheme) DarkBlue else LightGray
+    val textColor = if (isDarkTheme) White else Black
+    val errorColor = if (isDarkTheme) LightRed else DarkRed
 
     LaunchedEffect(retryCount) {
         try {
@@ -93,10 +104,6 @@ fun Cards(
         }
     }
 
-    val cardColor = if (isDarkTheme) Color(0xFF252733) else Color(0xFFDFE1E3)
-    val textColor = if (isDarkTheme) Color.White else Color.Black
-    val errorColor = if (isDarkTheme) Color(0xFFFF6666) else Color(0xFFD32F2F)
-
     when {
         isLoading -> {
             Box(
@@ -140,14 +147,14 @@ fun Cards(
                         retryCount++
                     },
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = if (isDarkTheme) Color(0xFF89322B) else Color(0xFFEF4138),
+                        containerColor = if (isDarkTheme) SuperDarkRed else SuperLightRed,
                         contentColor = textColor
                     ),
                     modifier = Modifier.width(200.dp)
                 ) {
                     Text(
                         "Reintentar", fontSize = 16.sp,
-                        color = Color.White
+                        color = White
                     )
                 }
             }
@@ -432,7 +439,7 @@ fun Cards(
                                 Button(
                                     onClick = { selectedCharacter = null },
                                     colors = ButtonDefaults.buttonColors(
-                                        containerColor = if (isDarkTheme) Color(0xFF89322B) else Color(0xFFEF4138),
+                                        containerColor = if (isDarkTheme) SuperDarkRed else SuperLightRed,
                                         contentColor = Color.White,
                                     ),
                                     modifier = Modifier

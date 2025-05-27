@@ -1,6 +1,5 @@
 package com.example.vigiball.ui.components
 
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
@@ -8,6 +7,7 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
+import com.example.vigiball.ui.theme.Black
 
 // Icon instagram
 
@@ -24,7 +24,7 @@ val ic_instagram: ImageVector
             viewportHeight = 16f
         ).apply {
             path(
-                fill = SolidColor(Color(0xFF000000)),
+                fill = SolidColor(Black),
                 fillAlpha = 1.0f,
                 stroke = null,
                 strokeAlpha = 1.0f,
@@ -118,7 +118,7 @@ val ic_linkedin: ImageVector
             viewportHeight = 15f
         ).apply {
             path(
-                fill = SolidColor(Color(0xFF000000)),
+                fill = SolidColor(Black),
                 fillAlpha = 1.0f,
                 stroke = null,
                 strokeAlpha = 1.0f,
@@ -191,7 +191,7 @@ val ic_github: ImageVector
             viewportHeight = 16f
         ).apply {
             path(
-                fill = SolidColor(Color(0xFF000000)),
+                fill = SolidColor(Black),
                 fillAlpha = 1.0f,
                 stroke = null,
                 strokeAlpha = 1.0f,
