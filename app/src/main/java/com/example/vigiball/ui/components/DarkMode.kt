@@ -40,6 +40,23 @@ import com.example.vigiball.ui.theme.BorderColor
 import com.example.vigiball.ui.theme.NightSky
 import kotlinx.coroutines.launch
 
+/*
+ Spanish:
+ Este es el switch personalizado para cambiar entre modo claro y oscuro,
+ tiene animaciones smooth cuando se cambia de estado, usa un Box con fondo
+ que cambia de color gradualmente entre azul cielo y noche, el sol y la luna
+ se deslizan con un efecto chido, además tiene un glow que sigue el movimiento
+ del botón, está hecho con composables y modificadores para que se vea bien en
+ el dispositivo.
+
+ English:
+ This is the custom switch for toggling between light and dark mode, it has smooth
+ animations when changing state, uses a Box with background that gradually changes
+ from sky blue to night, the sun and moon slide with a cool effect, plus it has a
+ glow that follows the button movement, everything is made with composables and modifiers
+ to look good on the device.
+*/
+
 @Composable
 fun DarkModeSwitch(checked: Boolean, modifier: Modifier, onCheckedChanged: (Boolean) -> Unit) {
 

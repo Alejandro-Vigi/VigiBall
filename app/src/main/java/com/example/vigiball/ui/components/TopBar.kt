@@ -64,6 +64,23 @@ import com.example.vigiball.ui.theme.SuperDarkRed
 import com.example.vigiball.ui.theme.SuperLightRed
 import com.example.vigiball.ui.theme.White
 
+/*
+ Spanish:
+ Esta es la barra superior de la app que tiene el logo, título y botones de acción,
+ incluye el switch de tema oscuro que hicimos antes, un botón de búsqueda y un menú
+ desplegable con opciones para compartir la app y ver info del desarrollador, cuando
+ haces click en "About" aparece un diálogo con mis redes sociales y datos de la universidad,
+ también tiene un buscador que filtra los personajes, se adapta al tema claro/oscuro y tiene
+ animaciones fluidas.
+
+ English:
+ This is the app's top bar with logo, title and action buttons, includes our dark theme
+ switch, a search button and dropdown menu with options to share the app and developer info,
+ when you click "About" a cool dialog appears with my social media and university info, it
+ also has a search feature that filters characters, everything adapts to light/dark theme
+ and has smooth animations.
+*/
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(

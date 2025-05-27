@@ -49,6 +49,20 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    /*
+    Spanish:
+    Estas son las dependencias que usa el proyecto, Retrofit para llamar a la API,
+    Gson para convertir los datos JSON en objetos Kotlin, Coil para cargar imágenes de
+    manera eficiente y DataStore para guardar preferencias del usuario de forma sencilla,
+    (para el modo oscuro) todas vienen del archivo libs.versions.toml que organiza las versiones.
+
+    English:
+    These are the project dependencies, Retrofit for API calls, Gson to convert JSON data
+    into Kotlin objects, Coil to load images efficiently and DataStore to save user preferences
+    (dark mode) easily, all come from the libs.versions.toml file that manages the versions.
+    */
+
     // Retrofit
     implementation(libs.retrofit)
     // Gson Converter

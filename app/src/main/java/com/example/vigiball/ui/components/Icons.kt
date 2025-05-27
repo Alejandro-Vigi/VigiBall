@@ -9,6 +9,23 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 import com.example.vigiball.ui.theme.Black
 
+/*
+ Spanish:
+ Estos son los íconos personalizados para redes sociales que uso en la app,
+ están hechos como ImageVector para que se vean bien en cualquier tamaño,
+ cada uno tiene su path con las instrucciones de dibujo, el de Instagram
+ tiene ese detalle de la cámara y el degradado característico, el de LinkedIn
+ es más cuadrado con su letra 'in' y el de GitHub tiene ese gato que todos conocemos,
+ lo bueno es que se cachean para no crearlos cada vez que se usan.
+
+ English:
+ These are custom social media icons for the app, made as ImageVector to look
+ sharp at any size, each has its path with drawing instructions, the Instagram
+ one has that camera detail and characteristic gradient, LinkedIn is more squared
+ with its 'in' letter, and GitHub has that cat we all know, the cool part is they're
+ cached so they're not recreated every time they're used.
+*/
+
 // Icon instagram
 val ic_instagram: ImageVector
     get() {

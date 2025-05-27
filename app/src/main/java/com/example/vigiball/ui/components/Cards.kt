@@ -42,6 +42,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import com.example.vigiball.R
 
+/*
+ Spanish:
+ Este es el componente principal que muestra las cartas de personajes en una cuadrícula,
+ primero hace la llamada a la API para obtener los datos, maneja los estados de carga y error,
+ y filtra los personajes según la búsqueda, cada carta muestra la imagen, nombre y afiliación
+ del personaje, al hacer click abre un diálogo con todos los detalles incluyendo descripción y
+ transformaciones, se adapta al tema claro/oscuro y tiene animaciones fluidas al cargar las imágenes.
+
+ English:
+ This is the main component that shows character cards in a grid, first makes the API call to get data,
+ handles loading and error states, and filters characters based on search, each card shows character image,
+ name and affiliation, when clicked opens a dialog with all details including description and transformations,
+ everything adapts to light/dark theme and has smooth animations when loading images.
+*/
+
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun Cards(
