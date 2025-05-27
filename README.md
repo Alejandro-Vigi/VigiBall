@@ -101,7 +101,7 @@ Diseñada con **Jetpack Compose**, **Kotlin** y **arquitectura limpia**, esta ap
 ## 🚀 Cómo ejecutar el proyecto
 
 ### 📥 Opción 1: Descargar APK (Recomendado para prueba rápida)
-1. **Descarga la última versión** desde [Releases](https://github.com/Alejandro-Vigi/VigiBall/releases/tag/v1.0)
+1. **Descarga la última versión** desde [Releases](https://github.com/Alejandro-Vigi/VigiBall/releases/)
 2. **Instala el APK** en tu dispositivo Android:
    - Ve a la carpeta de descargas
    - Toca en `VigiBall-v1.0.apk`
