@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VigiBall</string>
+    <string name="error">エラー</string>
+    <string name="retry">再試行</string>
+    <string name="error_internet">インターネットに接続されていません</string>
+    <string name="error_data">データの読み込みエラー</string>
+    <string name="affiliation">所属: %s</string>
+    <string name="description">説明: %s</string>
+    <string name="transformations">変身:</string>
+    <string name="no_transformations">このキャラクターは変身しません。</string>
+    <string name="cerrar">閉じる</string>
+    <string name="gender">性別: %s</string>
+    <string name="max_ki">最大KI: %s</string>
+    <string name="race">種族: %s</string>
+    <string name="about">について</string>
+    <string name="about_app">VigiBallについて</string>
+    <string name="logo_app">アプリのロゴ</string>
+    <string name="share">共有</string>
+    <string name="university">工学部 - 2025年 ©</string>
+    <string name="version">バージョン: 1.0</string>
+    <string name="name_character">キャラクター名</string>
+    <string name="clear">クリア</string>
+    <string name="buscar">検索</string>
+    <string name="search_character">キャラクターを検索</string>
+    <string name="developer">開発者</string>
+</resources>

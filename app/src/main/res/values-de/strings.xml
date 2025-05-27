@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VigiBall</string>
+    <string name="error_internet">Keine Internetverbindung</string>
+    <string name="error_data">Fehler beim Laden der Daten</string>
+    <string name="error">Fehler</string>
+    <string name="retry">Erneut versuchen</string>
+    <string name="affiliation">Zugehörigkeit: %s</string>
+    <string name="description">Beschreibung: %s</string>
+    <string name="transformations">Verwandlungen:</string>
+    <string name="no_transformations">Dieser Charakter hat keine Verwandlungen.</string>
+    <string name="cerrar">Schließen</string>
+    <string name="gender">Geschlecht: %s</string>
+    <string name="max_ki">Maximales KI: %s</string>
+    <string name="race">Rasse: %s</string>
+    <string name="about">Über</string>
+    <string name="about_app">Über VigiBall</string>
+    <string name="logo_app">App-Logo</string>
+    <string name="share">Teilen</string>
+    <string name="university">Fakultät für Ingenieurwesen - 2025 ©</string>
+    <string name="version">Version: 1.0</string>
+    <string name="name_character">Charaktername</string>
+    <string name="clear">Löschen</string>
+    <string name="buscar">Suchen</string>
+    <string name="search_character">Charakter suchen</string>
+    <string name="developer">Entwickler</string>
+</resources>

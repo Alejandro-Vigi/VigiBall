@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VigiBall</string>
+    <string name="error_internet">Нет подключения к интернету</string>
+    <string name="error_data">Ошибка загрузки данных</string>
+    <string name="error">Ошибка</string>
+    <string name="retry">Повторить</string>
+    <string name="affiliation">Принадлежность: %s</string>
+    <string name="description">Описание: %s</string>
+    <string name="transformations">Трансформации:</string>
+    <string name="no_transformations">У этого персонажа нет трансформаций.</string>
+    <string name="cerrar">Закрыть</string>
+    <string name="gender">Пол: %s</string>
+    <string name="max_ki">Макс. KI: %s</string>
+    <string name="race">Раса: %s</string>
+    <string name="about">О</string>
+    <string name="about_app">О VigiBall</string>
+    <string name="logo_app">Логотип приложения</string>
+    <string name="share">Поделиться</string>
+    <string name="university">Инженерный факультет - 2025 ©</string>
+    <string name="version">Версия: 1.0</string>
+    <string name="name_character">Имя персонажа</string>
+    <string name="clear">Очистить</string>
+    <string name="buscar">Поиск</string>
+    <string name="search_character">Поиск персонажа</string>
+    <string name="developer">Разработчик</string>
+</resources>

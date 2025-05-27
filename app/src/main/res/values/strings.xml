@@ -23,7 +23,7 @@
     <string name="more_actions" translatable="false">More Actions</string>
     <string name="share">Compartir</string>
     <string name="developer">Desarrollador</string>
-    <string name="name_developer">Vigi Garduño Marco Alejandro</string>
+    <string name="name_developer" translatable="false">Vigi Garduño Marco Alejandro</string>
     <string name="university">Facultad de Ingeniería - 2025 ©</string>
     <string name="version">Version: 1.0</string>
     <string name="instagram" translatable="false">Instagram</string>
@@ -33,8 +33,8 @@
     <string name="clear">Limpiar</string>
     <string name="buscar">Buscar</string>
     <string name="search_character">Buscar Personaje</string>
-    <string name="link_repository">https://github.com/Alejandro-Vigi/VigiBall</string>
-    <string name="link_instagram">http://instagram.com/alejandro_vigi</string>
-    <string name="link_linkedin">https://www.linkedin.com/in/alejandro-vigi/</string>
-    <string name="link_github">https://github.com/Alejandro-Vigi</string>
+    <string name="link_repository" translatable="false">https://github.com/Alejandro-Vigi/VigiBall</string>
+    <string name="link_instagram" translatable="false">http://instagram.com/alejandro_vigi</string>
+    <string name="link_linkedin" translatable="false">https://www.linkedin.com/in/alejandro-vigi/</string>
+    <string name="link_github" translatable="false">https://github.com/Alejandro-Vigi</string>
 </resources>

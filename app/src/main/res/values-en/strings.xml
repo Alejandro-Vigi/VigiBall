@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VigiBall</string>
+    <string name="error_internet">No internet connection</string>
+    <string name="error_data">Error loading data</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
+    <string name="affiliation">Affiliation: %s</string>
+    <string name="description">Description: %s</string>
+    <string name="transformations">Transformations:</string>
+    <string name="no_transformations">This character has no transformations.</string>
+    <string name="cerrar">Close</string>
+    <string name="gender">Gender: %s</string>
+    <string name="max_ki">Max KI: %s</string>
+    <string name="race">Race: %s</string>
+    <string name="about">About</string>
+    <string name="about_app">About VigiBall</string>
+    <string name="logo_app">App logo</string>
+    <string name="share">Share</string>
+    <string name="developer">Developer</string>
+    <string name="university">Engineering Faculty - 2025 ©</string>
+    <string name="version">Version: 1.0</string>
+    <string name="name_character">Character name</string>
+    <string name="clear">Clear</string>
+    <string name="buscar">Search</string>
+    <string name="search_character">Search Character</string>
+</resources>
