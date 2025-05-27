@@ -35,7 +35,7 @@ Diseñada con **Jetpack Compose**, **Kotlin** y **arquitectura limpia**, esta ap
 
 - 📲 **Botón de compartir** el proyecto en GitHub con tus contactos
 
-- 🙋‍♂️ **Sección “Acerca de”**: incluye tus redes sociales para contacto o portafolio
+- 🙋‍♂️ **Sección “Acerca de”**: Datos para contactar al desarrollador
 
 ---
 
