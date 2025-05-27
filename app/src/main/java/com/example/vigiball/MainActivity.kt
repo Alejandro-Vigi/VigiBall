@@ -1,6 +1,6 @@
 package com.example.vigiball
 
-import TopBar
+import com.example.vigiball.ui.components.com.example.vigiball.ui.components.TopBar
 import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity

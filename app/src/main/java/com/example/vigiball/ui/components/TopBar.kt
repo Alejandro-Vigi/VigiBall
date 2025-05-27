@@ -1,3 +1,5 @@
+package com.example.vigiball.ui.components.com.example.vigiball.ui.components
+
 import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -47,13 +49,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.example.vigiball.R
-import com.example.vigiball.ui.components.Cards
-import com.example.vigiball.ui.components.DarkModeSwitch
 import androidx.core.net.toUri
-import com.example.vigiball.ui.components.ic_instagram
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedTextField
+import com.example.vigiball.ui.components.Cards
+import com.example.vigiball.ui.components.DarkModeSwitch
 import com.example.vigiball.ui.components.ic_github
+import com.example.vigiball.ui.components.ic_instagram
 import com.example.vigiball.ui.components.ic_linkedin
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -68,6 +72,8 @@ fun TopBar(
     var showMenu by remember { mutableStateOf(false) }
     var showAboutDialog by remember { mutableStateOf(false) }
     val context = LocalContext.current
+    var searchQuery by remember { mutableStateOf("") }
+    var isSearchActive by remember { mutableStateOf(false) }
 
 
     fun shareAppLink() {
@@ -105,7 +111,7 @@ fun TopBar(
                         modifier = Modifier.padding(end = 12.dp),
                         onCheckedChanged = onToggleTheme
                     )
-                    IconButton(onClick = { /* Acción de búsqueda */ }) {
+                    IconButton(onClick = { isSearchActive = true }) {
                         Icon(
                             Icons.Rounded.Search,
                             contentDescription = "Search",
@@ -139,7 +145,7 @@ fun TopBar(
                             DropdownMenuItem(
                                 text = {
                                     Text(
-                                        "Compartir",
+                                        text = "Compartir",
                                         color = themeTextColor,
                                         fontSize = 16.sp,
                                         fontWeight = FontWeight.Medium,
@@ -163,7 +169,7 @@ fun TopBar(
                             DropdownMenuItem(
                                 text = {
                                     Text(
-                                        "Acerca de",
+                                        text = "Acerca de",
                                         color = themeTextColor,
                                         fontSize = 16.sp,
                                         fontWeight = FontWeight.Medium,
@@ -194,7 +200,10 @@ fun TopBar(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            Cards(isDarkTheme = isDarkTheme)
+            Cards(
+                isDarkTheme = isDarkTheme,
+                searchQuery = searchQuery,
+                onSearchQueryChange = { searchQuery = it })
         }
         if (showAboutDialog) {
             AlertDialog(
@@ -351,6 +360,83 @@ fun TopBar(
                 containerColor = if (isDarkTheme) Color(0xFF252733) else Color.White,
                 textContentColor = if (isDarkTheme) Color.White else Color.Black,
                 titleContentColor = if (isDarkTheme) Color.White else Color.Black
+            )
+        }
+        if (isSearchActive) {
+            AlertDialog(
+                onDismissRequest = { isSearchActive = false },
+                containerColor = backgroundColor,
+                title = {
+                    Box(modifier = Modifier.fillMaxWidth()) {
+                        IconButton(
+                            onClick = { isSearchActive = false },
+                            modifier = Modifier
+                                .align(Alignment.TopEnd)
+                                .zIndex(1f)
+                                .offset(10.dp)
+                                .size(30.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.Close,
+                                contentDescription = "Close",
+                                tint = if (isDarkTheme) Color.White else Color.Black,
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                        Text(
+                            "Buscar Personaje",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.fillMaxWidth(),
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                },
+                text = {
+                    Column {
+                        OutlinedTextField(
+                            value = searchQuery,
+                            onValueChange = { searchQuery = it },
+                            label = { Text("Nombre del personaje") },
+                            modifier = Modifier.fillMaxWidth(),
+                            singleLine = true
+                        )
+                    }
+                },
+                confirmButton = {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Button(
+                            onClick = {
+                                searchQuery = ""
+                                isSearchActive = false
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = if (isDarkTheme) Color(0xFF252733) else Color(0xFFDFE1E3)
+                            ),
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Text("Limpiar",
+                                color = if (isDarkTheme) Color.White else Color.Black)
+                        }
+
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                        Button(
+                            onClick = {
+                                isSearchActive = false
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = if (isDarkTheme) Color(0xFF3b496f) else Color(0xFF90b0e5)
+                            ),
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Text("Buscar",
+                                color = if (isDarkTheme) Color.White else Color.Black,)
+                        }
+                    }
+                }
             )
         }
     }

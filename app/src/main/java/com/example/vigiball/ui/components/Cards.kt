@@ -32,21 +32,28 @@ import com.example.vigiball.ui.network.DragonBallApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun Cards(isDarkTheme: Boolean) {
+fun Cards(
+    isDarkTheme: Boolean,
+    searchQuery: String,
+    onSearchQueryChange: (String) -> Unit
+    ) {
     var characters by remember { mutableStateOf(emptyList<Character>()) }
     var isLoading by remember { mutableStateOf(true) }
     var error by remember { mutableStateOf<String?>(null) }
     var retryCount by remember { mutableIntStateOf(0) }
     var selectedCharacter by remember { mutableStateOf<Character?>(null) }
     var isLoadingDialog by remember { mutableStateOf(false) }
+    var allCharacters by remember { mutableStateOf(emptyList<Character>()) }
+    var filteredCharacters by remember { mutableStateOf(emptyList<Character>()) }
 
     LaunchedEffect(retryCount) {
         try {
             val response = withContext(Dispatchers.IO) {
                 DragonBallApi.service.getCharacters()
             }
-            characters = response.items.map {
+            allCharacters = response.items.map {
                 Character(
                     id = it.id.toString(),
                     name = it.name,
@@ -59,6 +66,13 @@ fun Cards(isDarkTheme: Boolean) {
                     description = it.description
                 )
             }
+            filteredCharacters = if (searchQuery.isBlank()) {
+                allCharacters
+            } else {
+                allCharacters.filter { character ->
+                    character.name.contains(searchQuery, ignoreCase = true)
+                }
+            }
             error = null
         } catch (e: Exception) {
             error = if (e.message?.contains("No address associated with hostname") == true) {
@@ -68,6 +82,16 @@ fun Cards(isDarkTheme: Boolean) {
             }
         } finally {
             isLoading = false
+        }
+    }
+
+    LaunchedEffect(searchQuery) {
+        filteredCharacters = if (searchQuery.isBlank()) {
+            allCharacters
+        } else {
+            allCharacters.filter { character ->
+                character.name.contains(searchQuery, ignoreCase = true)
+            }
         }
     }
 
@@ -137,7 +161,7 @@ fun Cards(isDarkTheme: Boolean) {
             verticalArrangement = Arrangement.spacedBy(18.dp),
             horizontalArrangement = Arrangement.spacedBy(18.dp)
         ) {
-            items(characters) { character ->
+            items(filteredCharacters) { character ->
                 Card(
                     shape = RoundedCornerShape(12.dp),
                     colors = CardDefaults.cardColors(containerColor = cardColor),
@@ -351,32 +375,55 @@ fun Cards(isDarkTheme: Boolean) {
                                     color = textColor
                                 )
 
+                                Spacer(modifier = Modifier.height(16.dp))
+
                                 if (character.transformations.isNotEmpty()) {
-                                    character.transformations.forEach { transformation ->
-                                        Spacer(modifier = Modifier.height(8.dp))
+                                    FlowRow(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceEvenly,
+                                        verticalArrangement = Arrangement.Center,
+                                        maxItemsInEachRow = 2
+                                    ) {
+                                        character.transformations.forEach { transformation ->
+                                            Column(
+                                                modifier = Modifier
+                                                    .width(150.dp)
+                                                    .padding(8.dp),
+                                                horizontalAlignment = Alignment.CenterHorizontally
+                                            ) {
+                                                Text(
+                                                    text = transformation.name,
+                                                    fontSize = 16.sp,
+                                                    fontWeight = FontWeight.SemiBold,
+                                                    color = textColor,
+                                                    textAlign = TextAlign.Center,
+                                                    modifier = Modifier.fillMaxWidth()
+                                                )
 
-                                        Text(
-                                            text = transformation.name,
-                                            fontSize = 16.sp,
-                                            fontWeight = FontWeight.SemiBold,
-                                            color = textColor
-                                        )
+                                                AsyncImage(
+                                                    model = transformation.image,
+                                                    contentDescription = transformation.name,
+                                                    modifier = Modifier
+                                                        .height(120.dp)
+                                                        .fillMaxWidth(),
+                                                    contentScale = ContentScale.Fit
+                                                )
 
-                                        AsyncImage(
-                                            model = transformation.image,
-                                            contentDescription = transformation.name,
-                                            modifier = Modifier
-                                                .height(160.dp)
-                                                .fillMaxWidth(),
-                                            contentScale = ContentScale.Fit
-                                        )
-
-                                        Text("KI: ${transformation.ki}", color = textColor)
+                                                Text(
+                                                    text = "KI: ${transformation.ki}",
+                                                    color = textColor,
+                                                    textAlign = TextAlign.Center,
+                                                    modifier = Modifier.fillMaxWidth()
+                                                )
+                                            }
+                                        }
                                     }
                                 } else {
-                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Spacer(modifier = Modifier.height(3.dp))
                                     Text(
-                                        text = "Este personaje no tiene transformaciones registradas.",
+                                        text = "Este personaje no tiene transformaciones.",
+                                        modifier = Modifier.fillMaxWidth(),
+                                        textAlign = TextAlign.Center,
                                         fontSize = 16.sp,
                                         color = textColor
                                     )
@@ -395,7 +442,6 @@ fun Cards(isDarkTheme: Boolean) {
                                 ) {
                                     Text("Cerrar", fontSize = 16.sp)
                                 }
-
                                 Spacer(modifier = Modifier.height(5.dp))
                             }
                         }
