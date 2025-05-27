@@ -46,14 +46,12 @@ Diseñada con **Jetpack Compose**, **Kotlin** y **arquitectura limpia**, esta ap
 | Lenguaje | Kotlin |
 | UI | Jetpack Compose, Material 3 |
 | Navegación | Navigation Compose |
-| Arquitectura | MVVM + Clean Architecture |
 | Internacionalización | `strings.xml` con soporte multilenguaje |
 | Consumo de API | Retrofit + Gson |
 | Imágenes | Coil |
 | Persistencia | DataStore |
 | Manejo de estado | ViewModel, StateFlow |
-| Testing | JUnit, Espresso |
-| Otros | GitHub Actions (opcional), ProGuard (opcional) |
+| Otros | GitHub A |
 
 ---
 
