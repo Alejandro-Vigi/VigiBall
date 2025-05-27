@@ -1,6 +1,6 @@
 # 🐉 VigiBall App
 
-Una aplicación móvil moderna y adaptativa para explorar a los personajes del universo de **Dragon Ball**, obtenidos desde la [Dragon Ball API](https://dragonball-api.com/api/).  
+Una aplicación móvil moderna y adaptativa para explorar a los personajes del universo de **Dragon Ball**, obtenidos desde la [Dragon Ball API]([https://dragonball-api.com/api/](https://web.dragonball-api.com/)).  
 Diseñada con **Jetpack Compose**, **Kotlin** y **arquitectura limpia**, esta app te ofrece una experiencia fluida, sin bloqueos y completamente internacionalizada.
 
 ---
