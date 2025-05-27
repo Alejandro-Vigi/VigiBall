@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 
 // Icon instagram
 
-public val ic_instagram: ImageVector
+val ic_instagram: ImageVector
     get() {
         if (ic_instagram_private != null) {
             return ic_instagram_private!!
@@ -105,7 +105,7 @@ private var ic_instagram_private: ImageVector? = null
 
 // Icon LinkedIn
 
-public val ic_linkedin: ImageVector
+val ic_linkedin: ImageVector
     get() {
         if (ic_linkedin_private != null) {
             return ic_linkedin_private!!
@@ -178,7 +178,7 @@ private var ic_linkedin_private: ImageVector? = null
 
 // Icon Github
 
-public val ic_github: ImageVector
+val ic_github: ImageVector
     get() {
         if (ic_private_github != null) {
             return ic_private_github!!

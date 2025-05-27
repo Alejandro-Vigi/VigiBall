@@ -36,10 +36,8 @@ import kotlinx.coroutines.withContext
 @Composable
 fun Cards(
     isDarkTheme: Boolean,
-    searchQuery: String,
-    onSearchQueryChange: (String) -> Unit
-    ) {
-    var characters by remember { mutableStateOf(emptyList<Character>()) }
+    searchQuery: String
+) {
     var isLoading by remember { mutableStateOf(true) }
     var error by remember { mutableStateOf<String?>(null) }
     var retryCount by remember { mutableIntStateOf(0) }
@@ -244,7 +242,7 @@ fun Cards(
                             )
                         } ?: emptyList()
                     )
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                     value = currentCharacter
                 } finally {
                     isLoadingDialog = false

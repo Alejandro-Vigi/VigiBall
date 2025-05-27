@@ -1,4 +1,4 @@
-package com.example.vigiball.ui.components.com.example.vigiball.ui.components
+package com.example.vigiball.ui.components
 
 import android.content.Intent
 import androidx.compose.foundation.Image
@@ -54,11 +54,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
-import com.example.vigiball.ui.components.Cards
-import com.example.vigiball.ui.components.DarkModeSwitch
-import com.example.vigiball.ui.components.ic_github
-import com.example.vigiball.ui.components.ic_instagram
-import com.example.vigiball.ui.components.ic_linkedin
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -202,15 +197,14 @@ fun TopBar(
         ) {
             Cards(
                 isDarkTheme = isDarkTheme,
-                searchQuery = searchQuery,
-                onSearchQueryChange = { searchQuery = it })
+                searchQuery = searchQuery
+            )
         }
         if (showAboutDialog) {
             AlertDialog(
                 onDismissRequest = { showAboutDialog = false },
                 title = {
                     Box(modifier = Modifier.fillMaxWidth()) {
-                        // Botón de cierre en esquina superior derecha
                         IconButton(
                             onClick = { showAboutDialog = false },
                             modifier = Modifier

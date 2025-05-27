@@ -1,6 +1,5 @@
 package com.example.vigiball
 
-import com.example.vigiball.ui.components.com.example.vigiball.ui.components.TopBar
 import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,6 +13,7 @@ import androidx.compose.runtime.setValue
 import com.example.vigiball.ui.theme.VigiBallTheme
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.example.vigiball.ui.components.TopBar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
