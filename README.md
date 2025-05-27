@@ -98,10 +98,32 @@ Diseñada con **Jetpack Compose**, **Kotlin** y **arquitectura limpia**, esta ap
 - Русский (ru)
 
 ---
-
 ## 🚀 Cómo ejecutar el proyecto
 
-1. **Clona el repositorio**:
+### 📥 Opción 1: Descargar APK (Recomendado para prueba rápida)
+1. **Descarga la última versión** desde [Releases](https://github.com/Alejandro-Vigi/VigiBall/releases/tag/v1.0)
+2. **Instala el APK** en tu dispositivo Android:
+   - Ve a la carpeta de descargas
+   - Toca en `VigiBall-v1.0.apk`
+   - Permite la instalación de apps de origen desconocido si es necesario
+   - Sigue las instrucciones de instalación
 
-```bash
-git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
+### 👨💻 Opción 2: Clonar y compilar
+1. **Clona el repositorio**:
+   ```bash
+   git clone https://github.com/Alejandro-Vigi/VigiBall.git
+2. **Abre el proyecto** en Android Studio
+3. **Conecta tu dispositivo** Android o usa un emulador
+4. **Ejecuta la app**:
+   - Haz clic en el botón "Run" (▶️)
+   - Selecciona tu dispositivo
+   - Espera a que se instale y ejecute
+
+## 📱 Requisitos
+- Android 8.0 (Oreo) o superior
+- 100MB de espacio libre
+- Conexión a internet para cargar los datos
+
+## ⚠️ Notas importantes
+- La primera ejecución puede tardar unos segundos en cargar los personajes
+- Si tienes problemas con el APK, verifica que tienes permitida la instalación de apps de origen desconocido
