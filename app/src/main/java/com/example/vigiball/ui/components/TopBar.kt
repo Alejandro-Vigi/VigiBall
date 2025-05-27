@@ -81,7 +81,7 @@ fun TopBar(
 
 
     fun shareAppLink() {
-        val intent = Intent(Intent.ACTION_VIEW, "https://github.com/Alejandro-Vigi/VigiBall".toUri())
+        val intent = Intent(Intent.ACTION_VIEW, context.getString(R.string.link_repository).toUri())
         context.startActivity(intent)
     }
 
@@ -95,7 +95,7 @@ fun TopBar(
                 ),
                 title = {
                     Text(
-                        text = "VigiBall",
+                        text = context.getString(R.string.app_name),
                         color = themeTextColor,
                         style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold)
                     )
@@ -118,7 +118,7 @@ fun TopBar(
                     IconButton(onClick = { isSearchActive = true }) {
                         Icon(
                             Icons.Rounded.Search,
-                            contentDescription = "Search",
+                            contentDescription = context.getString(R.string.search),
                             tint = themeTextColor,
                             modifier = Modifier
                                 .size(60.dp)
@@ -126,12 +126,11 @@ fun TopBar(
                         )
                     }
 
-                    // Menú de opciones
                     Box {
                         IconButton(onClick = { showMenu = !showMenu }) {
                             Icon(
                                 Icons.Default.MoreVert,
-                                contentDescription = "More Actions",
+                                contentDescription = context.getString(R.string.more_actions),
                                 tint = themeTextColor,
                                 modifier = Modifier
                                     .size(60.dp)
@@ -149,7 +148,7 @@ fun TopBar(
                             DropdownMenuItem(
                                 text = {
                                     Text(
-                                        text = "Compartir",
+                                        text = context.getString(R.string.share),
                                         color = themeTextColor,
                                         fontSize = 16.sp,
                                         fontWeight = FontWeight.Medium,
@@ -163,7 +162,7 @@ fun TopBar(
                                 leadingIcon = {
                                     Icon(
                                         Icons.Rounded.Share,
-                                        contentDescription = "Compartir",
+                                        contentDescription = context.getString(R.string.share),
                                         tint = themeTextColor,
                                         modifier = Modifier.padding(start = 10.dp)
                                     )
@@ -173,7 +172,7 @@ fun TopBar(
                             DropdownMenuItem(
                                 text = {
                                     Text(
-                                        text = "Acerca de",
+                                        text = context.getString(R.string.about),
                                         color = themeTextColor,
                                         fontSize = 16.sp,
                                         fontWeight = FontWeight.Medium,
@@ -187,7 +186,7 @@ fun TopBar(
                                 leadingIcon = {
                                     Icon(
                                         Icons.Rounded.Info,
-                                        contentDescription = "Acerca de",
+                                        contentDescription = context.getString(R.string.about),
                                         tint = themeTextColor,
                                         modifier = Modifier.padding(start = 10.dp)
                                     )
@@ -224,19 +223,17 @@ fun TopBar(
                         ) {
                             Icon(
                                 imageVector = Icons.Rounded.Close,
-                                contentDescription = "Close",
+                                contentDescription = context.getString(R.string.close),
                                 tint = if (isDarkTheme) White else Black,
                                 modifier = Modifier.size(24.dp)
                             )
                         }
-
-                        // Contenido del título (texto + imagen)
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Text(
-                                "Acerca de VigiBall",
+                                text = context.getString(R.string.about_app),
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 20.sp,
                                 textAlign = TextAlign.Center,
@@ -245,7 +242,7 @@ fun TopBar(
                             Spacer(modifier = Modifier.height(8.dp))
                             Image(
                                 painter = painterResource(id = R.drawable.ic_dragonball_svg),
-                                contentDescription = "Logo de la aplicación",
+                                contentDescription = context.getString(R.string.logo_app),
                                 modifier = Modifier
                                     .size(100.dp)
                                     .padding(top = 10.dp)
@@ -256,14 +253,14 @@ fun TopBar(
                 text = {
                     Column{
                         Text(
-                            text = "Desarrollador",
+                            text = context.getString(R.string.developer),
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth(),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.W600
                         )
                         Text(
-                            text = "Vigi Garduño Marco Alejandro",
+                            text = context.getString(R.string.name_developer),
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth(),
                             fontSize = 16.sp,
@@ -271,7 +268,7 @@ fun TopBar(
                         )
                         Spacer(modifier = Modifier.height(7.dp))
                         Text(
-                            text = "Facultad de Ingeniería - 2025 ©",
+                            text = context.getString(R.string.university),
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth(),
                             fontSize = 16.sp,
@@ -279,7 +276,7 @@ fun TopBar(
                         )
                         Spacer(modifier = Modifier.height(7.dp))
                         Text(
-                            text = "Versión: 1.0",
+                            text = context.getString(R.string.version),
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth(),
                             fontSize = 16.sp,
@@ -301,7 +298,7 @@ fun TopBar(
                             IconButton(
                                 onClick = {
                                     val intent = Intent(Intent.ACTION_VIEW,
-                                        "http://instagram.com/alejandro_vigi".toUri())
+                                        context.getString(R.string.link_linkedin).toUri())
                                     context.startActivity(intent)
                                 },
                                 modifier = Modifier.size(50.dp)
@@ -309,7 +306,7 @@ fun TopBar(
                                 Icon(
                                     imageVector = ic_instagram,
                                     modifier = Modifier.size(40.dp),
-                                    contentDescription = "Instagram",
+                                    contentDescription = context.getString(R.string.instagram),
                                     tint = if (isDarkTheme) White else Black
                                 )
                             }
@@ -317,7 +314,7 @@ fun TopBar(
                             IconButton(
                                 onClick = {
                                     val intent = Intent(Intent.ACTION_VIEW,
-                                        "https://www.linkedin.com/in/alejandro-vigi/".toUri())
+                                        context.getString(R.string.link_linkedin).toUri())
                                     context.startActivity(intent)
                                 },
                                 modifier = Modifier.size(50.dp)
@@ -325,7 +322,7 @@ fun TopBar(
                                 Icon(
                                     imageVector = ic_linkedin,
                                     modifier = Modifier.size(40.dp),
-                                    contentDescription = "Linkedin",
+                                    contentDescription = context.getString(R.string.linkedin),
                                     tint = if (isDarkTheme) White else Black
                                 )
                             }
@@ -333,7 +330,7 @@ fun TopBar(
                             IconButton(
                                 onClick = {
                                     val intent = Intent(Intent.ACTION_VIEW,
-                                        "https://github.com/Alejandro-Vigi".toUri())
+                                        context.getString(R.string.link_github).toUri())
                                     context.startActivity(intent)
                                 },
                                 modifier = Modifier.size(50.dp)
@@ -341,7 +338,7 @@ fun TopBar(
                                 Icon(
                                     imageVector = ic_github,
                                     modifier = Modifier.size(40.dp),
-                                    contentDescription = "Instagram",
+                                    contentDescription = context.getString(R.string.github),
                                     tint = if (isDarkTheme) White else Black
                                 )
                             }
@@ -357,7 +354,7 @@ fun TopBar(
                         ),
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text("Cerrar")
+                        Text(context.getString(R.string.cerrar))
                     }
                 },
                 containerColor = if (isDarkTheme) DarkBlue else White,
@@ -381,13 +378,13 @@ fun TopBar(
                         ) {
                             Icon(
                                 imageVector = Icons.Rounded.Close,
-                                contentDescription = "Close",
+                                contentDescription = context.getString(R.string.close),
                                 tint = if (isDarkTheme) White else Black,
                                 modifier = Modifier.size(24.dp)
                             )
                         }
                         Text(
-                            "Buscar Personaje",
+                            context.getString(R.string.search_character),
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.Center
@@ -399,7 +396,7 @@ fun TopBar(
                         OutlinedTextField(
                             value = searchQuery,
                             onValueChange = { searchQuery = it },
-                            label = { Text("Nombre del personaje") },
+                            label = { Text(context.getString(R.string.name_character)) },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true
                         )
@@ -420,7 +417,7 @@ fun TopBar(
                             ),
                             modifier = Modifier.weight(1f)
                         ) {
-                            Text("Limpiar",
+                            Text(context.getString(R.string.clear),
                                 color = if (isDarkTheme) White else Black)
                         }
 
@@ -435,7 +432,7 @@ fun TopBar(
                             ),
                             modifier = Modifier.weight(1f)
                         ) {
-                            Text("Buscar",
+                            Text(context.getString(R.string.buscar),
                                 color = if (isDarkTheme) White else Black)
                         }
                     }

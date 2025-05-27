@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -39,6 +40,7 @@ import com.example.vigiball.ui.theme.SuperLightRed
 import com.example.vigiball.ui.theme.White
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.example.vigiball.R
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -56,6 +58,7 @@ fun Cards(
     val cardColor = if (isDarkTheme) DarkBlue else LightGray
     val textColor = if (isDarkTheme) White else Black
     val errorColor = if (isDarkTheme) LightRed else DarkRed
+    val context = LocalContext.current
 
     LaunchedEffect(retryCount) {
         try {
@@ -84,10 +87,10 @@ fun Cards(
             }
             error = null
         } catch (e: Exception) {
-            error = if (e.message?.contains("No address associated with hostname") == true) {
-                "No hay conexión a internet"
+            error = if (e.message?.contains(context.getString(R.string.error_hostname)) == true) {
+                context.getString(R.string.error_internet)
             } else {
-                "Error al cargar los datos"
+                context.getString(R.string.error_data)
             }
         } finally {
             isLoading = false
@@ -124,7 +127,7 @@ fun Cards(
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Warning,
-                    contentDescription = "Error",
+                    contentDescription = context.getString(R.string.error),
                     tint = errorColor,
                     modifier = Modifier.size(60.dp)
                 )
@@ -153,7 +156,7 @@ fun Cards(
                     modifier = Modifier.width(200.dp)
                 ) {
                     Text(
-                        "Reintentar", fontSize = 16.sp,
+                        context.getString(R.string.retry), fontSize = 16.sp,
                         color = White
                     )
                 }
@@ -221,7 +224,6 @@ fun Cards(
         }
     }
 
-    // Diálogo
     selectedCharacter?.let { currentCharacter ->
         val characterState by produceState<Character?>(
             initialValue = currentCharacter,
@@ -294,7 +296,7 @@ fun Cards(
                         ) {
                             Icon(
                                 imageVector = Icons.Rounded.Close,
-                                contentDescription = "Close",
+                                contentDescription = context.getString(R.string.close),
                                 tint = textColor,
                                 modifier = Modifier.size(24.dp)
                             )
@@ -331,31 +333,31 @@ fun Cards(
                                 Spacer(modifier = Modifier.height(12.dp))
 
                                 Text(
-                                    "Afiliación: ${character.affiliation}",
+                                    text = String.format(context.getString(R.string.affiliation), character.affiliation),
                                     fontSize = 18.sp,
                                     color = textColor
                                 )
 
                                 Text(
-                                    "KI: ${character.ki}",
+                                    text = String.format(context.getString(R.string.ki), character.ki),
                                     fontSize = 18.sp,
                                     color = textColor
                                 )
 
                                 Text(
-                                    "KI Máximo: ${character.maxKi}",
+                                    text = String.format(context.getString(R.string.max_ki), character.maxKi),
                                     fontSize = 18.sp,
                                     color = textColor
                                 )
 
                                 Text(
-                                    "Raza: ${character.race}",
+                                    text = String.format(context.getString(R.string.race), character.race),
                                     fontSize = 18.sp,
                                     color = textColor
                                 )
 
                                 Text(
-                                    "Género: ${character.gender}",
+                                    text = String.format(context.getString(R.string.gender), character.gender),
                                     fontSize = 18.sp,
                                     color = textColor
                                 )
@@ -363,7 +365,7 @@ fun Cards(
                                 Spacer(modifier = Modifier.height(12.dp))
 
                                 Text(
-                                    text = "Descripción:\n${character.description}",
+                                    text = String.format(context.getString(R.string.description), character.description),
                                     fontSize = 16.sp,
                                     color = textColor,
                                     textAlign = TextAlign.Justify,
@@ -374,7 +376,7 @@ fun Cards(
                                 Spacer(modifier = Modifier.height(16.dp))
 
                                 Text(
-                                    text = "Transformaciones:",
+                                    text = context.getString(R.string.transformations),
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = textColor
@@ -415,7 +417,7 @@ fun Cards(
                                                 )
 
                                                 Text(
-                                                    text = "KI: ${transformation.ki}",
+                                                    text = String.format(context.getString(R.string.transformation_ki), transformation.ki),
                                                     color = textColor,
                                                     textAlign = TextAlign.Center,
                                                     modifier = Modifier.fillMaxWidth()
@@ -426,7 +428,7 @@ fun Cards(
                                 } else {
                                     Spacer(modifier = Modifier.height(3.dp))
                                     Text(
-                                        text = "Este personaje no tiene transformaciones.",
+                                        text = context.getString(R.string.no_transformations),
                                         modifier = Modifier.fillMaxWidth(),
                                         textAlign = TextAlign.Center,
                                         fontSize = 16.sp,
@@ -445,7 +447,7 @@ fun Cards(
                                     modifier = Modifier
                                         .fillMaxWidth()
                                 ) {
-                                    Text("Cerrar", fontSize = 16.sp)
+                                    Text(context.getString(R.string.cerrar), fontSize = 16.sp)
                                 }
                                 Spacer(modifier = Modifier.height(5.dp))
                             }

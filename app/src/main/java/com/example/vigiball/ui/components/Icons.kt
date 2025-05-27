@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.dp
 import com.example.vigiball.ui.theme.Black
 
 // Icon instagram
-
 val ic_instagram: ImageVector
     get() {
         if (ic_instagram_private != null) {
@@ -104,14 +103,13 @@ val ic_instagram: ImageVector
 private var ic_instagram_private: ImageVector? = null
 
 // Icon LinkedIn
-
 val ic_linkedin: ImageVector
     get() {
         if (ic_linkedin_private != null) {
             return ic_linkedin_private!!
         }
         ic_linkedin_private = ImageVector.Builder(
-            name = "LinkedinLogo",
+            name = "Linkedin",
             defaultWidth = 15.dp,
             defaultHeight = 15.dp,
             viewportWidth = 15f,
@@ -177,7 +175,6 @@ private var ic_linkedin_private: ImageVector? = null
 
 
 // Icon Github
-
 val ic_github: ImageVector
     get() {
         if (ic_private_github != null) {

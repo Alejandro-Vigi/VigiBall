@@ -1,3 +1,40 @@
 <resources>
-    <string name="app_name">VigiBall</string>
+    <string name="app_name" translatable="false">VigiBall</string>
+    <string name="error_hostname" translatable="false">No address associated with hostname</string>
+    <string name="error_internet">No hay conexión a internet</string>
+    <string name="error_data">Error al cargar los datos</string>
+    <string name="error">Error</string>
+    <string name="retry">Reintentar</string>
+    <string name="close" translatable="false">Close</string>
+    <string name="affiliation">Afiliación: %s</string>
+    <string name="ki" translatable="false">Ki: %s</string>
+    <string name="description">Descripción: %s</string>
+    <string name="transformations">Transformaciones:</string>
+    <string name="transformation_ki" translatable="false">KI: %s</string>
+    <string name="no_transformations">Este personaje no tiene transformaciones.</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="gender">Género: %s</string>
+    <string name="max_ki">KI Máximo: %s</string>
+    <string name="race">Raza: %s</string>
+    <string name="about">Acerca de</string>
+    <string name="about_app">Acerca de VigiBall</string>
+    <string name="logo_app">Logo de la aplicación</string>
+    <string name="search" translatable="false">Search</string>
+    <string name="more_actions" translatable="false">More Actions</string>
+    <string name="share">Compartir</string>
+    <string name="developer">Desarrollador</string>
+    <string name="name_developer">Vigi Garduño Marco Alejandro</string>
+    <string name="university">Facultad de Ingeniería - 2025 ©</string>
+    <string name="version">Version: 1.0</string>
+    <string name="instagram" translatable="false">Instagram</string>
+    <string name="linkedin" translatable="false">Linkedin</string>
+    <string name="github" translatable="false">Github</string>
+    <string name="name_character">Nombre del personaje</string>
+    <string name="clear">Limpiar</string>
+    <string name="buscar">Buscar</string>
+    <string name="search_character">Buscar Personaje</string>
+    <string name="link_repository">https://github.com/Alejandro-Vigi/VigiBall</string>
+    <string name="link_instagram">http://instagram.com/alejandro_vigi</string>
+    <string name="link_linkedin">https://www.linkedin.com/in/alejandro-vigi/</string>
+    <string name="link_github">https://github.com/Alejandro-Vigi</string>
 </resources>
